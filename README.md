@@ -1,9 +1,1 @@
-python -c "import pathlib;p=pathlib.Path('workflow/project/state/baseline.txt');p.write_text('1b952b5\n')"
-python -c "import pathlib;[pathlib.Path(f).write_bytes(pathlib.Path(f).read_bytes().replace(b'f1b6b7d',b'1b952b5')) for f in ['tests/test_repository_scope_guard.py','workflow/project/project.md']]"
-
-python workflow/kit/tools/qa_collect.py --task 4 --freeze
-
-python -m pytest tests/test_repository_scope_guard.py -q -p no:warnings --tb=short
-
-git add workflow/project/state/baseline.txt workflow/project/state/frozen_tests.json workflow/project/project.md tests/test_repository_scope_guard.py
-git commit -m "Baseline update to 1b952b5, refreeze task 4 tests"
+Human direction for task 4: I authorize attempt 6 and want it recorded in decisions.md. Scope: only the defect in review-T04-a5.md, where timestamped profiles from unknown TSOs are classified as foreign instead of unrecognized. The Engineer works from product-owner-T04-a5-table.md and the exact example in the review. Before changing code, the Engineer runs a short script that prints the classification result for every table row plus the Reviewer's example. After the fix, the Engineer runs the script again and then the whole tests/test_rao_ncp_loader.py, then the focused C9, C11, C15 and C16 tests (-q -p no:warnings --tb=short). No full suite, no test edits. If any step fails, stop and report the exact output. Do not dispatch QA or the Reviewer until the Engineer has reported
