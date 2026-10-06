@@ -1,1 +1,9 @@
-Human decision for task 4: I approve the Product Owner's recommendation in product-owner-T04-a6-igm-scope.md. C11 is revised for the single-TSO IGM scope. Record this as a decision in decisions.md. Step 1: dispatch QA to revise only the two affected C11 tests in tests/test_rao_input_layout_criteria.py, with evidence from the Product Owner's document. QA gives me the exact commands to re-freeze and run, because QA's terminal cannot run long commands. Step 2, after I confirm the re-freeze: dispatch the Engineer, who removes the foreign classification in ncp_loader.py and implements the corrected table. The Engineer runs the whole tests/test_rao_ncp_loader.py first, then the focused C9, C11, C15 and C16 tests (-q -p no:warnings --tb=short). No full suite. Do not dispatch the Reviewer yet
+git add tests/test_rao_input_layout_criteria.py workflow/project/state/frozen_tests.json
+
+
+
+git commit -m "task 4 WIP: C11 tests revised for IGM scope, refreeze"
+
+
+
+The human re-froze the tests and committed them. The two revised C11 tests currently fail with 'DID NOT RAISE Exception', as expected. Dispatch the Engineer as planned: remove the foreign classification in ncp_loader.py so that a flat profile from another TSO or an unknown TSO is unrecognized and rejected under C3, and the legacy hyphenated ZIP export stays known_irrelevant. First run the whole tests/test_rao_ncp_loader.py, then the two revised C11 tests and the focused C9, C15 and C16 tests (-q -p no:warnings --tb=short). No full suite, no test edits. Also ask QA to note why the criteria count is 16 now and not 17. Do not dispatch the Reviewer yet.
