@@ -1,7 +1,1 @@
-python -m pytest tests/test_rao_input_layout_criteria.py::test_real_input_full_pipeline_end_to_end --runxfail -q -p no:warnings --tb=short 2>&1 | Out-File -Encoding utf8 workflow/project/reports/human-T04-c14-stage.txt
-
-Get-Content workflow/project/reports/human-T04-c14-stage.txt | Select-Object -Last 25
-
-The human ran the C14 failure-stage check. The output is in workflow/project/reports/human-T04-c14-stage.txt. It shows MilpStageFailure: failed at or after MILP build (KeyError overload_slack_n0), meaning the input stage passes and the failure is at the MILP stage. Dispatch QA to update the task 4 report with this as the C14 evidence. QA does not rerun the suite. If QA passes, dispatch the Reviewer
-
-Select-String -Path workflow/project/reports/human-T04-c14-stage.txt -Pattern "^E ", "Error", "assert", "test_rao_input_layout_criteria.py:" | Select-Object -First 15
+Dispatch the Product Owner. Read review-T04-a2.md. For each BLOCK finding (test-change authorization, foreign-TSO handling under C11, malformed PST-action accounting under C9), the Product Owner rules: (a) valid, so the Engineer must fix it; (b) already covered by an existing decision, so record the reference; or (c) not valid, with a reason from the spec. For the test-change finding, record any missing authorization in decisions.md if the Product Owner agrees the changes were justified. The Product Owner writes a short ruling and says whether this means attempt 3. Do not dispatch the Engineer yet.
