@@ -1,3 +1,6 @@
-python -m pytest tests/test_rao_input_layout_criteria.py::test_real_input_full_pipeline_end_to_end --runxfail -q -p no:warnings --tb=short 2>&1 | Out-File -Encoding utf8 workflow/project/reports/human-T04-c14-stage.txt
+git add .github/agents/engineer.agent.md
+git commit -m "Engineer agent model update"
 
-The human ran the QA collector for task 4 attempt 5 and refreshed the C14 stage evidence in workflow/project/reports/human-T04-c14-stage.txt. Dispatch QA to write the report from qa_collect_T04.json, without rerunning the suite. If QA passes, dispatch the Reviewer. The Reviewer pays particular attention to the earlier C9 and C11 BLOCK findings and the classification table in product-owner-T04-a5-table.md.
+git status --short  
+
+git rev-parse --short HEAD.
